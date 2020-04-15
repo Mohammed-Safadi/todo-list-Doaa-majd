@@ -26,12 +26,13 @@ $(document).ready(function(){
     });
 	
 	// when we want to add task as done, from css i hide the <a>Mark as Done go to style file line 41, here i add class done.
-	$('.done-action').on( 'click', function() {
+	$(document).on( 'click', '.done-action', function() {
+		console.log("hello");
 	  $(this).parent().parent('li').addClass('done');
 	});    
 	
 	// when delete button clicked
-	$('.delete-action').on( 'click', function() {
+	$(document).on( 'click','.delete-action', function() {
 	  
 		var valOfTask = $(this).closest('.list-group-item').find('.task-text').html().trim(); //get the task value ex.Learn HTML
 		var index = toDoItem.indexOf(valOfTask);   // get the index of the value return 
