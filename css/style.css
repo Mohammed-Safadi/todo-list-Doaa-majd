@@ -34,3 +34,10 @@ Styles for To Do's List App
 	color: red;
 	text-decoration: none
 }
+/* when we mark task as done we add class done to li */
+.done{
+	color: #69d069 !important;
+}
+.done .done-action{
+	display: none;
+}
