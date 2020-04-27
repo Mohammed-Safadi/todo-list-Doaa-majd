@@ -11,6 +11,10 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<?php 
+require 'db.php'; 
+$db = new Db(); 
+?>
 	<div class="container">
 		<div class="row todo">
 			<div class="col">
@@ -25,6 +29,21 @@
 			<div class="row">
 				<div class="col">
 					<ul class="list-group todo-items">
+                    
+                    <?php 
+                        $result= $db->getAllRecords();
+                           foreach($result as $row)
+                           {
+                    ?>
+                    <li class="list-group-item border-top-0 border-right-0 border-left-0 mb-1 <?php if($row['status'] == 1) { echo 'done'; } ?>">
+					   <div class="float-left task-text"> <?php echo $row['name'] ;?> </div>
+					   <div class="float-right action" id="<?php echo $row['id'] ;?>">
+                         <a href ="#" class="done-action">Mark as Done </a>|<a href ="#" class="delete-action"> Delete</a>
+                       </div>
+                    </li>
+                    <?php        
+                           }
+                    ?>
 					<!--	<li class="list-group-item border-top-0 border-right-0 border-left-0 mb-1">
 							<div class="float-left"> Learn HTML </div>
 							<div class="float-right action"><a href ="#" class="done">Mark as Done </a>|<a href ="#" class="delete"> Delete</a></div>
